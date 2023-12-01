@@ -6,8 +6,16 @@ public class GameManager : MonoBehaviour {
     private static GameManager instance;
     public static GameManager Instance => instance;
 
+    [HideInInspector]
     public GameObject player;
+    [HideInInspector]
     public GameObject[] enemys;
+
+    public enum Potions { Healing }
+    public Potions Type { get; private set; }
+
+    [SerializeField]
+    private GameObject healingPotionPrefab;
 
     private void Awake() {
         if (instance != null) {
@@ -19,6 +27,14 @@ public class GameManager : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnEnable() {
+        Enemy.OnDeath += SpawnPotion;
+    }
+
+    private void OnDisable() {
+        Ememy.OnDeath -= SpawnPotion;   
+    }
+
     private void Start() {
         if (GameObject.FindGameObjectWithTag("player")) {
             player = GameObject.FindGameObjectWithTag("player");
@@ -28,6 +44,20 @@ public class GameManager : MonoBehaviour {
     private void Update() {
         if (GameObject.FindGameObjectsWithTag("enemy") != null) {
             enemys = GameObject.FindGameObjectsWithTag("enemy");
+        }
+    }
+
+    private void SpawnPotion(GameObject deadEnemy) {
+        if (Random.Range(0, 6) == 6) {
+            Type = (Potions) Random.Range(0, Potions.GetNames(typeof(Potions)).Length);
+            Instantiate(FindPotionType(Type), deadEnemy.transform.position, Quaternion.identity);
+        }
+    }
+
+    private GameObject FindPotionType(Potions type) {
+        switch (type) {
+            case Potions.Healing: return healingPotionPrefab;
+            default: return null;
         }
     }
 }
