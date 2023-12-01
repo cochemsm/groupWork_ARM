@@ -1,11 +1,13 @@
-using System;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Enemy))]
 public class Ghost : MonoBehaviour
 {
     private GameManager gameManager;
     private GameObject player;
     private new Rigidbody2D rigidbody2D;
+    private Enemy enemy;
 
     public float movementSpeed = 3f;
     public int hitPoints = 2;
@@ -17,6 +19,7 @@ public class Ghost : MonoBehaviour
         //player = gameManager.player;
         player = GameObject.Find("Player");
         rigidbody2D = GetComponent<Rigidbody2D>();
+        enemy = GetComponent<Enemy>();
     }
 
     private void Update()
@@ -33,5 +36,12 @@ public class Ghost : MonoBehaviour
         print(moveDirection);
 
         rigidbody2D.velocity = moveDirection * movementSpeed;
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        hitPoints -= damageAmount;
+        if (hitPoints <= 0)
+            enemy.OnDeath.Invoke(this.gameObject);
     }
 }
