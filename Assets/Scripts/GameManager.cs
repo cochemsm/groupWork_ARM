@@ -79,4 +79,8 @@ public class GameManager : MonoBehaviour {
     public void GameOver() {
         GameObject.FindGameObjectWithTag("screenUI").transform.GetChild(0).gameObject.SetActive(true);
     }
+
+    public IEnumerator Wait(int seconds) {
+        yield return new WaitForSeconds(seconds);
+    }
 }

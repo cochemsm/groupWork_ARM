@@ -10,6 +10,7 @@ TagManager:
   - weapon
   - worldUI
   - playerHealth
+  - screenUI
   layers:
   - Default
   - TransparentFX
