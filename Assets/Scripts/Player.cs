@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
      public event playerdeath Onplayerdeath;
      public int damage;
     public bool schlagen;
+    public int MaxHP = 10;
 
     private void Awake()
     {
@@ -46,7 +47,18 @@ public class Player : MonoBehaviour
         }
         
     }
-    
+    public void Heal(int healingAmount)
+    {
+
+        if (HP+healingAmount <= MaxHP)
+        {
+
+        HP = HP + healingAmount;
+        }
+        else {
+            HP = MaxHP;
+        }
+    }
 
 
     

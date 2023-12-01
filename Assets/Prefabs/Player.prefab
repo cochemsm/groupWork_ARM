@@ -102,7 +102,7 @@ MonoBehaviour:
   input: {x: 0, y: 0}
   HP: 3
   damage: 1
-  schlagen: 0
+  schlagen: 1
 --- !u!50 &6923561584989614981
 Rigidbody2D:
   serializedVersion: 4
