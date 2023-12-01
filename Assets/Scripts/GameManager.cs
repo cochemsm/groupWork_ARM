@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour {
 
     public void SpawnPopUpText(string text, Color textColor) {
         GameObject temp = Instantiate(popUpTextPrefab, worldUI.transform);
+        temp.transform.position += new Vector3(0, 0.2f, 0);
         temp.GetComponent<PopUpText>().SetTextAndColor(text, textColor);
     }
 }
