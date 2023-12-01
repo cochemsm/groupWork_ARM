@@ -1,21 +1,18 @@
-using System;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
 public class CameraMovement : MonoBehaviour
 {
     private GameObject player;
-    private Vector3 startPosition;
     private Vector3 targetPosition;
+    
+    private float distance;
 
     public float speed;
-    public float distance;
 
     private void Awake()
     {
         player = GameObject.Find("Player");
         distance = 10;
-        startPosition = new Vector3(0, 0, -distance);
     }
 
     private void Update()
