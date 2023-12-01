@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void OnDisable() {
-        Enemy.OnDeath -= SpawnPotion;   
+        Enemy.OnDeath -= SpawnPotion;
     }
 
     private void Start() {
