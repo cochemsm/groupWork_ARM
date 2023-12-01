@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
             {
                 transform.DetachChildren();
                 weapon.transform.SetParent(transform);
-
+                weapon.transform.localPosition=Vector2.zero;
            
             }
     }
