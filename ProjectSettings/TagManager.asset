@@ -8,6 +8,7 @@ TagManager:
   - enemy
   - wall
   - weapon
+  - worldUI
   layers:
   - Default
   - TransparentFX

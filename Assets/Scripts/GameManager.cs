@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour {
     public GameObject[] enemys;
 
     [HideInInspector]
-    
+    public GameObject worldUI;
+
+    [SerializeField]
+    private GameObject popUpTextPrefab;
 
     public enum Potions { Healing }
     public Potions Type { get; private set; }
@@ -42,6 +45,9 @@ public class GameManager : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("player")) {
             player = GameObject.FindGameObjectWithTag("player");
         }
+        if (GameObject.FindGameObjectWithTag("worldUI")) {
+            worldUI = GameObject.FindGameObjectWithTag("worldUI");
+        }
     }
 
     private void Update() {
@@ -65,6 +71,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void SpawnPopUpText(string text, Color textColor) {
-
+        GameObject temp = Instantiate(popUpTextPrefab, worldUI.transform);
+        temp.GetComponent<PopUpText>().SetTextAndColor(text, textColor);
     }
 }
