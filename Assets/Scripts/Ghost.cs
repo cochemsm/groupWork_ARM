@@ -1,6 +1,4 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Enemy))]
@@ -11,14 +9,21 @@ public class Ghost : MonoBehaviour
     private new Rigidbody2D rigidbody2D;
     private Enemy enemy;
 
+    [Space(20)]
+    [Range(1,10)]
     public float movementSpeed = 3f;
-    public int hitPoints = 2;
-    public int attackDamage = 1;
+    [Space(5)]
 
     // In which frame should the action be done in FixedUpdate.
-    public int attackTick = 50;
-    private int currentTick = 0;
-    private bool isAttacking = false;
+    [Range(1,50)]
+    public int attackRatePerSecond = 1;
+    private int attackTick;
+    private int currentTick;
+    private bool isAttacking;
+    
+    [Space(20)]
+    public int attackDamage = 1;
+    public int hitPoints = 2;
     
     private void Awake()
     {
@@ -27,6 +32,7 @@ public class Ghost : MonoBehaviour
         player = GameObject.Find("Player").GetComponent<Player>();
         rigidbody2D = GetComponent<Rigidbody2D>();
         enemy = GetComponent<Enemy>();
+        attackTick = 50 / attackRatePerSecond;
     }
 
     private void Update()
@@ -39,17 +45,9 @@ public class Ghost : MonoBehaviour
         currentTick++;
         if (currentTick == attackTick)
         {
-            HandleTick();
+            isAttacking = false;
             currentTick = 0;
         }
-        print(isAttacking);
-        print(currentTick);
-    }
-    
-    private void HandleTick()
-    {
-        isAttacking = false;
-        print("Tick!");
     }
 
     private void GhostMovement(Vector3 targetPosition)
@@ -75,6 +73,7 @@ public class Ghost : MonoBehaviour
         {
             if (isAttacking) return;
             print("Player takes Damage");
+            // player.TakeDamage(attackDamage);
             isAttacking = true;
         }
     }

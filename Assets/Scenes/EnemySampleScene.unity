@@ -556,7 +556,7 @@ MonoBehaviour:
   movementSpeed: 3
   hitPoints: 2
   attackDamage: 1
-  attackTick: 50
+  attackRatePerSecond: 1
 --- !u!114 &1527327322
 MonoBehaviour:
   m_ObjectHideFlags: 0
