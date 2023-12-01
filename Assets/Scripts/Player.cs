@@ -41,19 +41,19 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = input * speed;
+       rigidbody2d.velocity = input * speed;
 
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("wall"))
+        if (collision.gameObject.CompareTag("wall"))
        {
             rigidbody2d.velocity = new Vector2(-rigidbody2d.velocity.x, -rigidbody2d.velocity.y);
 
         }
 
-        if (collision.GetComponent<Collider2D>() .gameObject.CompareTag("weapon")) 
+        if (collision.gameObject.CompareTag("weapon")) 
         
         {
             weapon = collision.gameObject;
