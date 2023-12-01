@@ -73,7 +73,7 @@ public class Ghost : MonoBehaviour
         {
             if (isAttacking) return;
             print("Player takes Damage");
-            // player.TakeDamage(attackDamage);
+            player.Damage(attackDamage);
             isAttacking = true;
         }
     }
