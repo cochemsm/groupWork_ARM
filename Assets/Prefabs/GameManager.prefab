@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 774831083902621456}
   - component: {fileID: 7430289662083112918}
+  - component: {fileID: 5569298901133660316}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -49,3 +50,18 @@ MonoBehaviour:
   worldUI: {fileID: 0}
   popUpTextPrefab: {fileID: 2230426634747152269, guid: 5fd81d5cab2f48446941c107e4aab378, type: 3}
   healingPotionPrefab: {fileID: 8892800020466808159, guid: 0d9885c05feac0742bd4ccc0a9ed9a3c, type: 3}
+--- !u!114 &5569298901133660316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798383300780623583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e584b606f833b49a0295739fc41a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  startEnemyNumber: 6
+  ghostPrefab: {fileID: 6968725910418330943, guid: 05e9f1d2d6395b44c9ad5f4676e5db0c, type: 3}

@@ -6,10 +6,14 @@ public class Enemy : MonoBehaviour
     public delegate void Death(GameObject Enemy);
     public static event Death OnDeath;
 
+    [SerializeField]
     private Image healthBar;
+    [SerializeField]
+    private GameObject Bar;
 
     private void Awake() {
-        healthBar = transform.GetChild(0).GetChild(0).GetChild(1).GetComponent<Image>();
+        Bar = transform.GetChild(0).GetChild(0).gameObject;
+        healthBar = Bar.gameObject.transform.GetChild(1).GetComponent<Image>();
     }
 
     public void StartEvent()
@@ -20,6 +24,8 @@ public class Enemy : MonoBehaviour
     public void UpdateHealthBar(int hp, int maxHp) {
         if (!healthBar.gameObject.active) {
             healthBar.gameObject.SetActive(true);
+            Bar.gameObject.SetActive(true);
+            
         }
         healthBar.fillAmount = hp / maxHp;
     }

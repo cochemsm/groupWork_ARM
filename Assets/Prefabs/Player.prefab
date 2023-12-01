@@ -138,6 +138,8 @@ MonoBehaviour:
   damage: 1
   MaxHP: 10
   inweapon: 0
+  healthBar: {fileID: 8420442271262192424}
+  Bar: {fileID: 4387085510196337334}
 --- !u!50 &6923561584989614981
 Rigidbody2D:
   serializedVersion: 4
@@ -298,6 +300,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2991476894318199619, guid: ec7e7bdf3fe8a904581d496d83ce30de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5581723871204370137, guid: ec7e7bdf3fe8a904581d496d83ce30de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6509612452138083002, guid: ec7e7bdf3fe8a904581d496d83ce30de, type: 3}
       propertyPath: m_Name
       value: worldUI
@@ -324,3 +334,19 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 204650596416560365, guid: ec7e7bdf3fe8a904581d496d83ce30de, type: 3}
   m_PrefabInstance: {fileID: 1540744981992708597}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4387085510196337334 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2991476894318199619, guid: ec7e7bdf3fe8a904581d496d83ce30de, type: 3}
+  m_PrefabInstance: {fileID: 1540744981992708597}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8420442271262192424 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7042144119356926685, guid: ec7e7bdf3fe8a904581d496d83ce30de, type: 3}
+  m_PrefabInstance: {fileID: 1540744981992708597}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

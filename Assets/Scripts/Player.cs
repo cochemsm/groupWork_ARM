@@ -20,11 +20,13 @@ public class Player : MonoBehaviour {
     public bool inweapon = false;
     GameObject weapon;
 
+    [SerializeField]
     private Image healthBar;
+    [SerializeField]
+    private GameObject Bar;
 
     private void Awake() {
         rigidbody2d = GetComponent<Rigidbody2D>();
-        healthBar = GameObject.FindGameObjectWithTag("playerHealth").GetComponent<Image>();
     }
 
     private void Start() {
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour {
             HP = MaxHP;
             GameManager.Instance.Wait(2);
             healthBar.gameObject.SetActive(false);
+            Bar.gameObject.SetActive(false);
         }
 
         healthBar.fillAmount = HP / MaxHP;
@@ -86,6 +89,7 @@ public class Player : MonoBehaviour {
             HP = HP - damageAmount;
         }
         healthBar.gameObject.SetActive(true);
+        Bar.gameObject.SetActive(true);
         healthBar.fillAmount = HP / MaxHP;
     }
 }
