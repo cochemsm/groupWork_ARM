@@ -9,6 +9,7 @@ TagManager:
   - wall
   - weapon
   - worldUI
+  - playerHealth
   layers:
   - Default
   - TransparentFX
