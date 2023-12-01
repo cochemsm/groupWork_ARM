@@ -42,6 +42,6 @@ public class Ghost : MonoBehaviour
     {
         hitPoints -= damageAmount;
         if (hitPoints <= 0)
-            enemy.OnDeath.Invoke(this.gameObject);
+            enemy.StartEvent();
     }
 }
