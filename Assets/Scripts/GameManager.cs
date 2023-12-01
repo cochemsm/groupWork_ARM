@@ -11,6 +11,9 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public GameObject[] enemys;
 
+    [HideInInspector]
+    
+
     public enum Potions { Healing }
     public Potions Type { get; private set; }
 
@@ -59,5 +62,9 @@ public class GameManager : MonoBehaviour {
             case Potions.Healing: return healingPotionPrefab;
             default: return null;
         }
+    }
+
+    public void SpawnPopUpText(string text, Color textColor) {
+
     }
 }
