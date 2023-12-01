@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7279553745283339531}
   - component: {fileID: 6923561584989614981}
   - component: {fileID: -9074257649539674220}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: player
   m_Icon: {fileID: 0}
@@ -99,11 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125ffc235ef935e48a64d2f9af573479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 4
   input: {x: 0, y: 0}
   HP: 3
   damage: 1
   MaxHP: 10
+  inweapon: 0
 --- !u!50 &6923561584989614981
 Rigidbody2D:
   serializedVersion: 4
