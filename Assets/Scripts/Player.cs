@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -14,16 +15,26 @@ public class Player : MonoBehaviour
     public event playerdeath Onplayerdeath;
     public int damage;
     public int MaxHP = 10;
+    public bool inweapon=false;
+     GameObject weapon;
 
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        
     }
     private void Update()
     {
-
+      ;
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
+            if (inweapon == true && Input.GetKey(KeyCode.E))                 
+            {
+                transform.DetachChildren();
+                weapon.transform.SetParent(transform);
+
+           
+            }
     }
     private void FixedUpdate()
     {
@@ -39,10 +50,26 @@ public class Player : MonoBehaviour
 
         }
 
+        if (collision.GetComponent<Collider2D>() .gameObject.CompareTag("weapon")) 
+        
+        {
+            weapon = collision.gameObject;
+            inweapon=true;
+
+        }
 
     }
+      public void OnTriggerExit2D(Collider2D collision)
+      {
+        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("weapon"))
 
-       
+        {
+            weapon = collision.gameObject;
+            inweapon = false;
+        }
+    }
+
+
     public void Heal(int healingAmount)
     {
 
