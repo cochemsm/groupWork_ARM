@@ -62,6 +62,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e584b606f833b49a0295739fc41a02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 20
   startEnemyNumber: 6
   ghostPrefab: {fileID: 6968725910418330943, guid: 05e9f1d2d6395b44c9ad5f4676e5db0c, type: 3}

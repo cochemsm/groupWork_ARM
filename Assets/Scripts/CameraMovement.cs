@@ -13,6 +13,7 @@ public class CameraMovement : MonoBehaviour
     {
         player = GameObject.Find("Player");
         distance = 10;
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, -distance);
     }
 
     private void Update()

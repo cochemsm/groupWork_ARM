@@ -81,7 +81,7 @@ public class Player : MonoBehaviour {
     public void Damage(int damageAmount) {
         if (HP - damageAmount < 0) {
             HP = 0;
-            
+                GameManager.Instance.GameOver();
                 speed = 0;
                 transform.GetChild(0).DetachChildren();
             
