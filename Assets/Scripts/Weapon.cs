@@ -8,7 +8,7 @@ using static UnityEngine.GraphicsBuffer;
 public class Weapon : MonoBehaviour
 {
     Camera camera; 
-    int Damage;
+    public int Damage;
     Vector3 mouse_pos;
     Vector3 object_pos;
     float angle;
@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour
     private void Awake()
     {
         camera = Camera.main;
+        GetComponent<BoxCollider2D>().isTrigger = true; 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

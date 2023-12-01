@@ -32,10 +32,7 @@ public class Player : MonoBehaviour {
     }
 
     private void Update() {
-        if (HP == 0) {
-            speed = 0;
-            transform.DetachChildren();
-        }
+        
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
         if (inweapon == true && Input.GetKey(KeyCode.E)) {
@@ -81,6 +78,10 @@ public class Player : MonoBehaviour {
     public void Damage(int damageAmount) {
         if (HP - damageAmount < 0) {
             HP = 0;
+            
+                speed = 0;
+                transform.GetChild(0).DetachChildren();
+            
         } else {
             HP = HP - damageAmount;
         }
