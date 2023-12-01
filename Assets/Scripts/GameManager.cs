@@ -75,4 +75,8 @@ public class GameManager : MonoBehaviour {
         temp.transform.position += new Vector3(0, 0.2f, 0);
         temp.GetComponent<PopUpText>().SetTextAndColor(text, textColor);
     }
+
+    public void GameOver() {
+        GameObject.FindGameObjectWithTag("screenUI").transform.GetChild(0).gameObject.SetActive(true);
+    }
 }
