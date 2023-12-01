@@ -69,11 +69,11 @@ public class Ghost : MonoBehaviour
     
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("player"))
         {
             if (isAttacking) return;
             print("Player takes Damage");
-            // player.TakeDamage(attackDamage);
+            player.Damage(attackDamage);
             isAttacking = true;
         }
     }

@@ -26,34 +26,45 @@ public class Player : MonoBehaviour
         healthBar = GameObject.FindGameObjectWithTag("playerHealth").GetComponent<Image>();
         
     }
+
+    private void Start()
+    {
+        healthBar.fillAmount = HP / MaxHP;
+    }
     private void Update()
     {
-      ;
+
+        if (HP == 0) 
+        {
+            speed = 0;
+            transform.DetachChildren();
+
+        }
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
             if (inweapon == true && Input.GetKey(KeyCode.E))                 
             {
-                transform.DetachChildren();
-                weapon.transform.SetParent(transform);
+                transform.GetChild(0).DetachChildren();
+                weapon.transform.SetParent(transform.GetChild(0));
                 weapon.transform.localPosition=Vector2.zero;
            
             }
     }
     private void FixedUpdate()
     {
-        GetComponent<Rigidbody2D>().velocity = input * speed;
+       rigidbody2d.velocity = input * speed;
 
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<Collider2D>().gameObject.CompareTag("wall"))
+        if (collision.gameObject.CompareTag("wall"))
        {
             rigidbody2d.velocity = new Vector2(-rigidbody2d.velocity.x, -rigidbody2d.velocity.y);
 
         }
 
-        if (collision.GetComponent<Collider2D>() .gameObject.CompareTag("weapon")) 
+        if (collision.gameObject.CompareTag("weapon")) 
         
         {
             weapon = collision.gameObject;
@@ -84,7 +95,7 @@ public class Player : MonoBehaviour
             HP = MaxHP;
         }
 
-        healthBar.fillAmount = HP / 100f;
+        healthBar.fillAmount = HP / MaxHP;
     }
 
     public void Damage(int damageAmount) { 
@@ -94,7 +105,7 @@ public class Player : MonoBehaviour
             HP = HP - damageAmount;
         }
 
-        healthBar.fillAmount = HP / 100f;
+        healthBar.fillAmount = HP / MaxHP;
     }
  
 
