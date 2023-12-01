@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
     private static GameManager instance;
     public static GameManager Instance => instance;
 
-    public PlayerMovement player;
+    public GameObject player;
     public GameObject[] enemys;
 
     private void Awake() {
@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
 
     private void Start() {
         if (GameObject.FindGameObjectWithTag("player")) {
-            player = GameObject.FindGameObjectsWithTag("player");
+            player = GameObject.FindGameObjectWithTag("player");
         }
     }
 
