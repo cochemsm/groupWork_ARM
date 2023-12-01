@@ -4,6 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Undefined
   - player
   layers:
   - Default
