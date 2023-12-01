@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -16,11 +16,14 @@ public class Player : MonoBehaviour
     public int damage;
     public int MaxHP = 10;
     public bool inweapon=false;
-     GameObject weapon;
+    GameObject weapon;
+
+    private Image healthBar;
 
     private void Awake()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        healthBar = GameObject.FindGameObjectWithTag("playerHealth").GetComponent<Image>();
         
     }
     private void Update()
@@ -72,19 +75,27 @@ public class Player : MonoBehaviour
 
     public void Heal(int healingAmount)
     {
-
         if (HP + healingAmount <= MaxHP)
         {
-
             HP = HP + healingAmount;
         }
         else
         {
             HP = MaxHP;
         }
+
+        healthBar.fillAmount = HP / 100f;
     }
 
+    public void Damage(int damageAmount) { 
+        if (HP - damageAmount < 0) {
+            HP = 0;
+        } else {
+            HP = HP - damageAmount;
+        }
 
-
+        healthBar.fillAmount = HP / 100f;
+    }
+ 
 
 }
