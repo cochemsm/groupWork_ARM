@@ -24,6 +24,7 @@ public class Ghost : MonoBehaviour
     [Space(20)]
     public int attackDamage = 1;
     public int hitPoints = 2;
+    private int maxHitPoints;
     
     private void Awake()
     {
@@ -33,6 +34,8 @@ public class Ghost : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         enemy = GetComponent<Enemy>();
         attackTick = 50 / attackRatePerSecond;
+
+        maxHitPoints = hitPoints;
     }
 
     private void Update()
@@ -64,6 +67,7 @@ public class Ghost : MonoBehaviour
     {
         hitPoints -= damageAmount;
         if (hitPoints <= 0)
+            GetComponent<Enemy>().UpdateHealthBar(hitPoints, maxHitPoints);
             enemy.StartEvent(); Destroy(this.gameObject);
     }
     
