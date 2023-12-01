@@ -46,4 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   enemys: []
+  worldUI: {fileID: 0}
+  popUpTextPrefab: {fileID: 2230426634747152269, guid: 5fd81d5cab2f48446941c107e4aab378, type: 3}
   healingPotionPrefab: {fileID: 8892800020466808159, guid: 0d9885c05feac0742bd4ccc0a9ed9a3c, type: 3}

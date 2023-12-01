@@ -32,4 +32,9 @@ public class PopUpText : MonoBehaviour {
         text.alpha = 0.25f;
         Destroy(gameObject);
     }
+
+    public void SetTextAndColor(string newText, Color newColor) {
+        text.text = newText;
+        text.color = newColor;
+    }
 }
