@@ -6,15 +6,24 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D rigidbody2d;
      public float speed = 0;
-     public float input = 0;
+     public Vector2 input;
 
-    public void Update()
+
+
+
+    private void Awake()
     {
-        input = Input.GetAxis("Horizontal");
-        input = Input.GetAxis("Vertical");
-
+        rigidbody2d = GetComponent<Rigidbody2D>();
     }
-
+    private void Update()
+    {
+        input.x = Input.GetAxis("Horizontal");
+        input.y = Input.GetAxis("Vertical");
+    }
+    private void FixedUpdate()
+    {
+        GetComponent<Rigidbody2D>().velocity = input * speed;
+    }
 
 
 }
