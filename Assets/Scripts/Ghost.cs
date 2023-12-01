@@ -5,7 +5,7 @@ public class Ghost : MonoBehaviour
 {
     private GameManager gameManager;
     private GameObject player;
-    private Rigidbody2D rigidbody2D;
+    private new Rigidbody2D rigidbody2D;
 
     public float movementSpeed = 3f;
     public int hitPoints = 2;
