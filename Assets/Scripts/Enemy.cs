@@ -27,6 +27,6 @@ public class Enemy : MonoBehaviour
             Bar.gameObject.SetActive(true);
             
         }
-        healthBar.fillAmount = hp / maxHp;
+        healthBar.fillAmount = (float) hp / maxHp;
     }
 }

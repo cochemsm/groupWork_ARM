@@ -13,8 +13,8 @@ public class Player : MonoBehaviour {
     public delegate void playerdeath();
     public event playerdeath Onplayerdeath;
 
-    public int HP;
     public int damage;
+    public int HP;
     public int MaxHP = 10;
 
     public bool inweapon = false;
@@ -30,7 +30,9 @@ public class Player : MonoBehaviour {
     }
 
     private void Start() {
-        healthBar.fillAmount = HP / MaxHP;
+        healthBar.gameObject.SetActive(true);
+        Bar.gameObject.SetActive(true);
+        healthBar.fillAmount = (float) HP / MaxHP;
     }
 
     private void Update() {
@@ -75,7 +77,7 @@ public class Player : MonoBehaviour {
             Bar.gameObject.SetActive(false);
         }
 
-        healthBar.fillAmount = HP / MaxHP;
+        healthBar.fillAmount = (float) HP / MaxHP;
     }
 
     public void Damage(int damageAmount) {
@@ -90,6 +92,6 @@ public class Player : MonoBehaviour {
         }
         healthBar.gameObject.SetActive(true);
         Bar.gameObject.SetActive(true);
-        healthBar.fillAmount = HP / MaxHP;
+        healthBar.fillAmount = (float) HP / MaxHP;
     }
 }

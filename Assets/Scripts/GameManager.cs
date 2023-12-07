@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour {
     }
 
     private void SpawnPotion(GameObject deadEnemy) {
-        if (Random.Range(0, 6) == 6) {
+        if (Random.Range(0, 6) == 0) {
             Type = (Potions) Random.Range(0, Potions.GetNames(typeof(Potions)).Length);
             Instantiate(FindPotionType(Type), deadEnemy.transform.position, Quaternion.identity);
         }
