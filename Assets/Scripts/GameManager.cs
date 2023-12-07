@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour {
     private static GameManager instance;
@@ -14,8 +15,12 @@ public class GameManager : MonoBehaviour {
     [HideInInspector]
     public GameObject worldUI;
 
+    private GameObject screenUI;
+
     [SerializeField]
     private GameObject popUpTextPrefab;
+
+    private int score = 0;
 
     public enum Potions { Healing }
     public Potions Type { get; private set; }
@@ -48,6 +53,10 @@ public class GameManager : MonoBehaviour {
         if (GameObject.FindGameObjectWithTag("worldUI")) {
             worldUI = GameObject.FindGameObjectWithTag("worldUI");
         }
+        if (GameObject.FindGameObjectWithTag("screenUI")) {
+            screenUI = GameObject.FindGameObjectWithTag("screenUI");
+            screenUI.transform.GetChild(1).GetComponent<TMP_Text>().text = "Score: " + score.ToString();
+        }
     }
 
     private void Update() {
@@ -56,11 +65,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    private void SpawnPotion(GameObject deadEnemy) {
+    private void SpawnPotion(GameObject deadEnemy, int scoreAmount) {
         if (Random.Range(0, 6) == 0) {
             Type = (Potions) Random.Range(0, Potions.GetNames(typeof(Potions)).Length);
             Instantiate(FindPotionType(Type), deadEnemy.transform.position, Quaternion.identity);
         }
+        AddScore(scoreAmount);
     }
 
     private GameObject FindPotionType(Potions type) {
@@ -77,10 +87,15 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver() {
-        GameObject.FindGameObjectWithTag("screenUI").transform.GetChild(0).gameObject.SetActive(true);
+        screenUI.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public IEnumerator Wait(int seconds) {
         yield return new WaitForSeconds(seconds);
+    }
+
+    public void AddScore(int amount) {
+        score += amount;
+        screenUI.transform.GetChild(1).GetComponent<TMP_Text>().text = "Score: " + score.ToString();
     }
 }

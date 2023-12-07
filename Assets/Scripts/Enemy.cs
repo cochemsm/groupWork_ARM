@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-    public delegate void Death(GameObject Enemy);
+    public delegate void Death(GameObject Enemy, int scoreAmount);
     public static event Death OnDeath;
 
     [SerializeField]
@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     public void StartEvent()
     {
-        OnDeath.Invoke(this.gameObject);
+        OnDeath.Invoke(this.gameObject, 10);
     }
 
     public void UpdateHealthBar(int hp, int maxHp) {
