@@ -19,6 +19,7 @@ public class Player : MonoBehaviour {
 
     public bool inweapon = false;
     GameObject weapon;
+    private bool e = false;
 
     [SerializeField]
     private Image healthBar;
@@ -39,10 +40,14 @@ public class Player : MonoBehaviour {
         
         input.x = Input.GetAxis("Horizontal");
         input.y = Input.GetAxis("Vertical");
-        if (inweapon == true && Input.GetKey(KeyCode.E)) {
+        if (inweapon == true && Input.GetKeyDown(KeyCode.E) && !e) {
+            e = true;
             transform.GetChild(0).DetachChildren();
             weapon.transform.SetParent(transform.GetChild(0));
             weapon.transform.localPosition = Vector2.zero;
+        }
+        if (Input.GetKeyUp(KeyCode.E)) {
+            e = false;
         }
     }
 
